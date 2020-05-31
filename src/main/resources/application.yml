@@ -1,0 +1,5 @@
+beer:
+  limit: 1000
+  path: /tmp/test
+server:
+  port: 8081
