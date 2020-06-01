@@ -20,10 +20,8 @@ public class TranslationUseCase {
 
     public List<String> translate(int numberToStart) {
         log.info("Start translation use case for numbers from {} to {}", numberToStart, limit);
-        if (numberToStart > limit) {
-            log.error("Number to start {} is greater than limit {}", numberToStart, limit);
-            throw new NumberToStartIsGreaterThanLimitException(numberToStart, limit);
-        }
+
+        this.checkNumberToStartAndLimit(numberToStart, limit);
 
         List<String> numbersTranslated = IntStream.rangeClosed(numberToStart, limit)
                                                   .boxed()
@@ -38,4 +36,12 @@ public class TranslationUseCase {
         return numbersTranslated;
 
     }
+
+    private void checkNumberToStartAndLimit(int numberToStart, int limit) {
+        if (numberToStart > limit) {
+            log.error("Number to start {} is greater than limit {}", numberToStart, limit);
+            throw new NumberToStartIsGreaterThanLimitException(numberToStart, limit);
+        }
+    }
+
 }
