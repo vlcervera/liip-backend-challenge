@@ -1,5 +1,6 @@
 package org.vlcervera.beer.infrastructure.web.exception_handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.vlcervera.beer.domain.exception.NumberToStartIsGreaterThanLimitExcept
 import org.vlcervera.beer.domain.exception.TranslationStorageException;
 
 @RestControllerAdvice
+@Slf4j
 public class TranslationExceptionHandler {
 
     @ExceptionHandler({NumberToStartIsGreaterThanLimitException.class})
@@ -31,6 +33,7 @@ public class TranslationExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleException(Exception exception) {
+        log.error("Unknown error",exception);
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ApiError.Type.UNKNOWN);
         apiError.getErrors().add("Server error, please contact with support team");
 
