@@ -9,14 +9,12 @@ import java.util.UUID;
 @Component
 public class FileNameGenerator {
     public String getFileName() {
-        String fileBaseName = "beer-datetime.txt";
-
+        String fileBaseName = "%s-beer-%s.txt";
         UUID fileId = UUID.randomUUID();
         String timeStampForFilename = LocalDateTime.now()
                                                    .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
-        fileBaseName = fileBaseName.replaceAll("datetime", timeStampForFilename);
-
-        return String.join("-", fileId.toString(), fileBaseName);
+        return String.format(fileBaseName, fileId.toString(), timeStampForFilename);
     }
+
 }
