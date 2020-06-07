@@ -1,6 +1,5 @@
 package org.vlcervera.beer;
 
-import com.google.common.collect.Lists;
 import org.vlcervera.beer.application.use_case.TranslationUseCase;
 import org.vlcervera.beer.domain.translation.DividerTranslation;
 import org.vlcervera.beer.domain.translation.Translation;
@@ -29,7 +28,7 @@ public class BeerApplicationWithoutFramework {
         DividerTranslation customDividerTranslationForFizz = new DividerTranslation(3, "fizz");
         DividerTranslation customDividerTranslationForBuzz = new DividerTranslation(5, "buzz");
 
-        List<Translation> translationsToUse = Lists.newArrayList(customDividerTranslationForFizz, customDividerTranslationForBuzz);
+        List<Translation> translationsToUse = List.of(customDividerTranslationForFizz, customDividerTranslationForBuzz);
         Translations      translations      = new Translations(translationsToUse);
 
         //Use case
