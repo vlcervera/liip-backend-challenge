@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DividerTranslationTest {
+public class DivisorTranslationTest {
 
     private static Stream<Arguments> provideTranslationsCases() {
         final String fizz = "fizz";
@@ -27,10 +27,10 @@ public class DividerTranslationTest {
     @MethodSource("provideTranslationsCases")
     public void execution(int numberBase, String translationBase, int numberToTranslate, String translationExpected) {
         //GIVEN
-        DividerTranslation dividerTranslation = new DividerTranslation(numberBase, translationBase);
+        DivisorTranslation divisorTranslation = new DivisorTranslation(numberBase, translationBase);
 
         //WHEN
-        String valueTranslated = dividerTranslation.translate(numberToTranslate);
+        String valueTranslated = divisorTranslation.translate(numberToTranslate);
 
         //THEN
         assertThat(valueTranslated).isEqualTo(translationExpected);

@@ -16,8 +16,8 @@ public class TranslationsTest {
     @Test
     public void shouldTranslateAllNumbers() {
         //GIVEN
-        DividerTranslation first  = new DividerTranslation(3, "fizz");
-        DividerTranslation second = new DividerTranslation(5, "buzz");
+        DivisorTranslation first  = new DivisorTranslation(3, "fizz");
+        DivisorTranslation second = new DivisorTranslation(5, "buzz");
 
         translations = new Translations(Lists.newArrayList(first, second));
 

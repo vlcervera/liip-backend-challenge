@@ -3,11 +3,11 @@ package org.vlcervera.beer.domain.model.translation;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DividerTranslation implements Translation {
-    private final int    divider;
+public class DivisorTranslation implements Translation {
+    private final int    divisor;
     private final String translation;
 
     public String translate(int numberToTranslate) {
-        return numberToTranslate % divider == 0 ? translation : NO_TRANSLATION_VALUE;
+        return numberToTranslate % divisor == 0 ? translation : NO_TRANSLATION_VALUE;
     }
 }

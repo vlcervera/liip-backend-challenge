@@ -1,7 +1,7 @@
 package org.vlcervera.beer;
 
 import org.vlcervera.beer.application.use_case.TranslationUseCase;
-import org.vlcervera.beer.domain.model.translation.DividerTranslation;
+import org.vlcervera.beer.domain.model.translation.DivisorTranslation;
 import org.vlcervera.beer.domain.model.translation.Translation;
 import org.vlcervera.beer.domain.model.translation.Translations;
 import org.vlcervera.beer.infrastructure.adapter.FileNameGenerator;
@@ -25,10 +25,10 @@ public class BeerApplicationWithoutFramework {
         TranslationSaveRepositoryAdapter translationSaveRepositoryAdapter = new TranslationSaveRepositoryAdapter(path, fileNameGenerator);
 
         // Create translations available
-        DividerTranslation customDividerTranslationForFizz = new DividerTranslation(3, "fizz");
-        DividerTranslation customDividerTranslationForBuzz = new DividerTranslation(5, "buzz");
+        DivisorTranslation customDivisorTranslationForFizz = new DivisorTranslation(3, "fizz");
+        DivisorTranslation customDivisorTranslationForBuzz = new DivisorTranslation(5, "buzz");
 
-        List<Translation> translationsToUse = List.of(customDividerTranslationForFizz, customDividerTranslationForBuzz);
+        List<Translation> translationsToUse = List.of(customDivisorTranslationForFizz, customDivisorTranslationForBuzz);
         Translations      translations      = new Translations(translationsToUse);
 
         //Use case
