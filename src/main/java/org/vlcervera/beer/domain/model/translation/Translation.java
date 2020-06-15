@@ -1,4 +1,4 @@
-package org.vlcervera.beer.domain.translation;
+package org.vlcervera.beer.domain.model.translation;
 
 import org.apache.logging.log4j.util.Strings;
 

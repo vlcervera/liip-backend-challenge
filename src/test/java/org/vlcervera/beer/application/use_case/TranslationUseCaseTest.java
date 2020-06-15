@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.vlcervera.beer.domain.exception.NumberToStartIsGreaterThanLimitException;
 import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
-import org.vlcervera.beer.domain.translation.Translations;
+import org.vlcervera.beer.domain.model.translation.Translations;
 
 import java.util.List;
 

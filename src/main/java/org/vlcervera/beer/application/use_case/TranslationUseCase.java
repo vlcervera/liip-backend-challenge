@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.vlcervera.beer.domain.exception.NumberToStartIsGreaterThanLimitException;
 import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
-import org.vlcervera.beer.domain.translation.Translations;
+import org.vlcervera.beer.domain.model.translation.Translations;
 
 import java.util.List;
 import java.util.stream.Collectors;

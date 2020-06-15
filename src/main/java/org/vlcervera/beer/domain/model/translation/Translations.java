@@ -1,4 +1,4 @@
-package org.vlcervera.beer.domain.translation;
+package org.vlcervera.beer.domain.model.translation;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ public class Translations {
 
         /* Apply all translations to numberToTranslate */
         List<String> translationExecuted = translations.stream()
-                                                       .map(dividerTranslation -> dividerTranslation.translate(numberToTranslate))
+                                                       .map(translation -> translation.translate(numberToTranslate))
                                                        .collect(toList());
 
         /* Check if no one translation has been applied to numberToTranslate */

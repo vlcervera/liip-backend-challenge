@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.vlcervera.beer.application.use_case.TranslationUseCase;
 import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
-import org.vlcervera.beer.domain.translation.DividerTranslation;
-import org.vlcervera.beer.domain.translation.Translation;
-import org.vlcervera.beer.domain.translation.Translations;
+import org.vlcervera.beer.domain.model.translation.DividerTranslation;
+import org.vlcervera.beer.domain.model.translation.Translation;
+import org.vlcervera.beer.domain.model.translation.Translations;
 import org.vlcervera.beer.infrastructure.adapter.FileNameGenerator;
 import org.vlcervera.beer.infrastructure.adapter.TranslationSaveRepositoryAdapter;
 
