@@ -2,6 +2,8 @@ package org.vlcervera.beer.domain.model.translation;
 
 import org.apache.logging.log4j.util.Strings;
 
+import java.util.Optional;
+
 /**
  * Common behaviour required in all Translation implementations.
  * <p>
@@ -9,7 +11,6 @@ import org.apache.logging.log4j.util.Strings;
  * In case of the number doesn't meet the condition the value retrieved ins NO_TRANSLATION_VALUE
  */
 public interface Translation {
-    public static String NO_TRANSLATION_VALUE = Strings.EMPTY;
 
-    String translate(int numberToTranslate);
+    Optional<String> translate(int numberToTranslate);
 }

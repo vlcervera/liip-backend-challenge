@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,8 +18,8 @@ public class DivisorTranslationTest {
 
         return Stream.of(
                 Arguments.of(3, fizz, 3, fizz),
-                Arguments.of(3, fizz, 4, Strings.EMPTY),
-                Arguments.of(5, buzz, 1, Strings.EMPTY),
+                Arguments.of(3, fizz, 4, null),
+                Arguments.of(5, buzz, 1, null),
                 Arguments.of(5, buzz, 15, buzz)
                         );
     }
@@ -30,10 +31,15 @@ public class DivisorTranslationTest {
         DivisorTranslation divisorTranslation = new DivisorTranslation(numberBase, translationBase);
 
         //WHEN
-        String valueTranslated = divisorTranslation.translate(numberToTranslate);
+        Optional<String> valueTranslated = divisorTranslation.translate(numberToTranslate);
 
         //THEN
-        assertThat(valueTranslated).isEqualTo(translationExpected);
+        if(translationExpected!=null){
+            assertThat(valueTranslated).isPresent();
+            assertThat(valueTranslated.get()).isEqualTo(translationExpected);
+        }else{
+            assertThat(valueTranslated).isNotPresent();
+        }
     }
 
 }

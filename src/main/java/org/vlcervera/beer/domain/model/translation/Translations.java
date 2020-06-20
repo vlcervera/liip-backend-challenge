@@ -3,6 +3,7 @@ package org.vlcervera.beer.domain.model.translation;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 import static org.apache.logging.log4j.util.Strings.EMPTY;
@@ -23,11 +24,12 @@ public class Translations {
         /* Apply all translations to numberToTranslate */
         List<String> translationExecuted = translations.stream()
                                                        .map(translation -> translation.translate(numberToTranslate))
+                                                       .filter(Optional::isPresent)
+                                                       .map(Optional::get)
                                                        .collect(toList());
 
         /* Check if no one translation has been applied to numberToTranslate */
-        boolean numberHasNotBeenTranslated = translationExecuted.stream()
-                                                                .allMatch(this::numberNotTranslated);
+        boolean numberHasNotBeenTranslated = translationExecuted.isEmpty();
         /*
         In case of any translation has been applied the result of this method is the join of all values translated.
         If no one translation has been applied the method will return the number in string format
@@ -38,8 +40,5 @@ public class Translations {
 
     }
 
-    private boolean numberNotTranslated(String translation) {
-        return translation.equals(Translation.NO_TRANSLATION_VALUE);
-    }
 
 }

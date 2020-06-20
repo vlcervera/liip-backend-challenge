@@ -1,10 +1,10 @@
 package org.vlcervera.beer.domain.model.translation;
 
-import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,8 +16,8 @@ public class PairNumberTranslationTest {
 
         return Stream.of(
                 Arguments.of(10, pair),
-                Arguments.of(3, Strings.EMPTY),
-                Arguments.of(5, Strings.EMPTY),
+                Arguments.of(3, null),
+                Arguments.of(5, null),
                 Arguments.of(6, pair)
                         );
     }
@@ -29,10 +29,15 @@ public class PairNumberTranslationTest {
         PairNumberTranslation pairTranslationTest = new PairNumberTranslation();
 
         //WHEN
-        String valueTranslated = pairTranslationTest.translate(numberToTranslate);
+        Optional<String> valueTranslated = pairTranslationTest.translate(numberToTranslate);
 
         //THEN
-        assertThat(valueTranslated).isEqualTo(translationExpected);
+        if (translationExpected != null) {
+            assertThat(valueTranslated).isPresent();
+            assertThat(valueTranslated.get()).isEqualTo(translationExpected);
+        } else {
+            assertThat(valueTranslated).isNotPresent();
+        }
     }
 
 }
