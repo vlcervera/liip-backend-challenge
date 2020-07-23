@@ -22,9 +22,12 @@ public class TranslationSaveRepositoryAdapter implements TranslationSaveReposito
     public void save(List<String> numbersTranslated) {
         log.info("Start storage of {} numbers translated in local file", numbersTranslated.size());
         try {
+            Path directory = Paths.get(path);
+            Files.createDirectories(directory);
+
             String fileName = fileNameGenerator.getFileName();
             log.info("File name is {}", fileName);
-            Path out = Paths.get(path).resolve(fileName);
+            Path out = directory.resolve(fileName);
 
             Files.write(out, numbersTranslated, Charset.defaultCharset());
             log.info("Finished storage of {} numbers translated in local file success", numbersTranslated.size());

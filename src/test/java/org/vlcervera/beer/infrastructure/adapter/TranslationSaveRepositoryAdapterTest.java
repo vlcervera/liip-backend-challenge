@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 @ExtendWith(MockitoExtension.class)
 public class TranslationSaveRepositoryAdapterTest {
 
-    String path     = "/tmp";
+    String path     = "/tmp/test";
     String fileName = "filename-example.txt";
 
     @Test
