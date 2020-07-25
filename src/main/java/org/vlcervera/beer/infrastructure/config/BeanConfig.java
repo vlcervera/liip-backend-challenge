@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.vlcervera.beer.application.use_case.TranslationUseCase;
-import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 import org.vlcervera.beer.domain.model.translation.DivisorTranslation;
 import org.vlcervera.beer.domain.model.translation.Translation;
 import org.vlcervera.beer.domain.model.translation.Translations;
+import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 import org.vlcervera.beer.infrastructure.adapter.FileNameGenerator;
-import org.vlcervera.beer.infrastructure.adapter.TranslationSaveRepositoryAdapter;
+import org.vlcervera.beer.infrastructure.adapter.TranslationStorageRepositoryAdapter;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class BeanConfig {
 
     @Bean
     public TranslationSaveRepositoryPort getTranslationSavedRepository(FileNameGenerator fileNameGenerator) {
-        return new TranslationSaveRepositoryAdapter(path, fileNameGenerator);
+        return new TranslationStorageRepositoryAdapter(path, fileNameGenerator);
     }
 
     @Bean

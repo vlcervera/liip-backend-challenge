@@ -5,7 +5,7 @@ import org.vlcervera.beer.domain.model.translation.DivisorTranslation;
 import org.vlcervera.beer.domain.model.translation.Translation;
 import org.vlcervera.beer.domain.model.translation.Translations;
 import org.vlcervera.beer.infrastructure.adapter.FileNameGenerator;
-import org.vlcervera.beer.infrastructure.adapter.TranslationSaveRepositoryAdapter;
+import org.vlcervera.beer.infrastructure.adapter.TranslationStorageRepositoryAdapter;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ public class BeerApplicationWithoutFramework {
         /* Create beans for dependencies */
 
         // For TranslationSaveRepositoryAdapter
-        FileNameGenerator                fileNameGenerator                = new FileNameGenerator();
-        String                           path                             = "/tmp/test";
-        TranslationSaveRepositoryAdapter translationSaveRepositoryAdapter = new TranslationSaveRepositoryAdapter(path, fileNameGenerator);
+        FileNameGenerator                   fileNameGenerator                   = new FileNameGenerator();
+        String                              path                                = "/tmp/test";
+        TranslationStorageRepositoryAdapter translationStorageRepositoryAdapter = new TranslationStorageRepositoryAdapter(path, fileNameGenerator);
 
         // Create translations available
         DivisorTranslation customDivisorTranslationForFizz = new DivisorTranslation(3, "fizz");
@@ -33,7 +33,7 @@ public class BeerApplicationWithoutFramework {
 
         //Use case
         int                limit              = 100;
-        TranslationUseCase translationUseCase = new TranslationUseCase(translations, limit, translationSaveRepositoryAdapter);
+        TranslationUseCase translationUseCase = new TranslationUseCase(translations, limit, translationStorageRepositoryAdapter);
 
 
         int numberToStart = 10;

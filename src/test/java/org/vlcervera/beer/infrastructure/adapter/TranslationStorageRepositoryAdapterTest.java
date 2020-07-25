@@ -7,13 +7,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.vlcervera.beer.domain.exception.TranslationStorageException;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @ExtendWith(MockitoExtension.class)
-public class TranslationSaveRepositoryAdapterTest {
+public class TranslationStorageRepositoryAdapterTest {
 
     String path     = "/tmp/test";
     String fileName = "filename-example.txt";
@@ -25,8 +26,8 @@ public class TranslationSaveRepositoryAdapterTest {
         FileNameGenerator fileNameGenerator = Mockito.mock(FileNameGenerator.class);
 
         //SUT
-        TranslationSaveRepositoryAdapter translationSaveRepositoryAdapter
-                = new TranslationSaveRepositoryAdapter(path, fileNameGenerator);
+        TranslationStorageRepositoryAdapter translationStorageRepositoryAdapter
+                = new TranslationStorageRepositoryAdapter(path, fileNameGenerator);
 
         Mockito.when(fileNameGenerator.getFileName()).thenReturn(fileName);
 
@@ -36,7 +37,7 @@ public class TranslationSaveRepositoryAdapterTest {
                                         .collect(Collectors.toList());
 
         //WHEN
-        translationSaveRepositoryAdapter.save(numbers);
+        translationStorageRepositoryAdapter.save(numbers);
 
         //THEN
         Assertions.assertThat(Paths.get(path).resolve(fileName)).exists();
@@ -50,8 +51,8 @@ public class TranslationSaveRepositoryAdapterTest {
             FileNameGenerator fileNameGenerator = Mockito.mock(FileNameGenerator.class);
 
             //SUT
-            TranslationSaveRepositoryAdapter translationSaveRepositoryAdapter
-                    = new TranslationSaveRepositoryAdapter(path, fileNameGenerator);
+            TranslationStorageRepositoryAdapter translationStorageRepositoryAdapter
+                    = new TranslationStorageRepositoryAdapter(path, fileNameGenerator);
 
             Mockito.when(fileNameGenerator.getFileName()).thenThrow(new IllegalStateException("Unknown error"));
 
@@ -61,7 +62,7 @@ public class TranslationSaveRepositoryAdapterTest {
                                             .collect(Collectors.toList());
 
             //WHEN
-            translationSaveRepositoryAdapter.save(numbers);
+            translationStorageRepositoryAdapter.save(numbers);
         });
 
 
