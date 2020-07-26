@@ -8,8 +8,8 @@ import lombok.Getter;
 @Getter
 public class NumberToStartIsGreaterThanLimitException extends RuntimeException {
 
-    private int numberToStart;
-    private int limit;
+    private final int numberToStart;
+    private final int limit;
 
     public NumberToStartIsGreaterThanLimitException(int numberToStart, int limit) {
         super(String.format("Error in translation process, start number %d is greater than limit %d number", numberToStart, limit));

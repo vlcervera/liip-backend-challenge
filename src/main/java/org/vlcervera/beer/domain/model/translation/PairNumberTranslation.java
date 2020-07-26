@@ -15,6 +15,6 @@ public class PairNumberTranslation implements Translation {
     
     public Optional<String> translate(int numberToTranslate) {
         boolean conditionToTranslate = numberToTranslate % 2 == 0;
-        return conditionToTranslate ? Optional.ofNullable("pair") : Optional.empty();
+        return conditionToTranslate ? Optional.of("pair") : Optional.empty();
     }
 }
