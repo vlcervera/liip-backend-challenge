@@ -14,6 +14,6 @@ public class NumberToStartIsGreaterThanLimitException extends RuntimeException {
     public NumberToStartIsGreaterThanLimitException(int numberToStart, int limit) {
         super(String.format("Error in translation process, start number %d is greater than limit %d number", numberToStart, limit));
         this.numberToStart = numberToStart;
-        this.limit = limit;
+        this.limit         = limit;
     }
 }

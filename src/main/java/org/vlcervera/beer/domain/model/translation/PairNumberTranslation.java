@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor
 public class PairNumberTranslation implements Translation {
-    
+
     public Optional<String> translate(int numberToTranslate) {
         boolean conditionToTranslate = numberToTranslate % 2 == 0;
         return conditionToTranslate ? Optional.of("pair") : Optional.empty();

@@ -1,6 +1,5 @@
 package org.vlcervera.beer.infrastructure.web.exception_handler;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

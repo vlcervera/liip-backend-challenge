@@ -6,6 +6,6 @@ package org.vlcervera.beer.domain.exception;
  */
 public class TranslationStorageException extends RuntimeException {
     public TranslationStorageException(Exception e) {
-        super("Error storing numbers translated",e);
+        super("Error storing numbers translated", e);
     }
 }

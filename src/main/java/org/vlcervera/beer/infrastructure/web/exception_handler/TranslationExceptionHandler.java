@@ -33,7 +33,7 @@ public class TranslationExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleException(Exception exception) {
-        log.error("Unknown error",exception);
+        log.error("Unknown error", exception);
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ApiError.Type.UNKNOWN);
         apiError.getErrors().add("Server error, please contact with support team");
 

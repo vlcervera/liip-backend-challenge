@@ -1,6 +1,5 @@
 package org.vlcervera.beer.domain.model.translation;
 
-import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -34,10 +33,10 @@ public class DivisorTranslationTest {
         Optional<String> valueTranslated = divisorTranslation.translate(numberToTranslate);
 
         //THEN
-        if(translationExpected!=null){
+        if (translationExpected != null) {
             assertThat(valueTranslated).isPresent();
             assertThat(valueTranslated.get()).isEqualTo(translationExpected);
-        }else{
+        } else {
             assertThat(valueTranslated).isNotPresent();
         }
     }

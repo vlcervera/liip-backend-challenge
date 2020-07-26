@@ -10,7 +10,7 @@ import java.util.UUID;
 public class FileNameGenerator {
     public String getFileName() {
         String fileBaseName = "%s-beer-%s.txt";
-        UUID fileId = UUID.randomUUID();
+        UUID   fileId       = UUID.randomUUID();
         String timeStampForFilename = LocalDateTime.now()
                                                    .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
