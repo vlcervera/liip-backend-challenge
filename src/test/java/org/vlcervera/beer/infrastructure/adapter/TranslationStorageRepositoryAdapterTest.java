@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.vlcervera.beer.domain.exception.TranslationStorageException;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +45,7 @@ public class TranslationStorageRepositoryAdapterTest {
     @Test
     public void shouldThrowDomainExceptionInUnknownAdapterError() {
 
-        org.junit.jupiter.api.Assertions.assertThrows(TranslationStorageException.class, () ->{
+        org.junit.jupiter.api.Assertions.assertThrows(TranslationStorageException.class, () -> {
             //GIVEN
             FileNameGenerator fileNameGenerator = Mockito.mock(FileNameGenerator.class);
 
@@ -63,6 +62,23 @@ public class TranslationStorageRepositoryAdapterTest {
 
             //WHEN
             translationStorageRepositoryAdapter.save(numbers);
+        });
+
+
+    }
+
+    @Test
+    public void shouldNotCreateTranslationStorageRepositoryAdapterInstance() {
+
+        org.junit.jupiter.api.Assertions.assertThrows(TranslationStorageException.class, () -> {
+            //GIVEN
+            FileNameGenerator fileNameGenerator = Mockito.mock(FileNameGenerator.class);
+
+            String pathWithoutPermission = "/tmpa";
+            //SUT
+            TranslationStorageRepositoryAdapter translationStorageRepositoryAdapter
+                    = new TranslationStorageRepositoryAdapter(pathWithoutPermission, fileNameGenerator);
+
         });
 
 
