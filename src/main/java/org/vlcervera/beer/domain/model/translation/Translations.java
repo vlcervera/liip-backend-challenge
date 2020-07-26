@@ -30,10 +30,9 @@ public class Translations {
 
         /* Check if no one translation has been applied to numberToTranslate */
         boolean numberHasNotBeenTranslated = translationExecuted.isEmpty();
-        /*
-        In case of any translation has been applied the result of this method is the join of all values translated.
-        If no one translation has been applied the method will return the number in string format
-         */
+
+        /* In case of no one translation has been applied the method will return the number in string format
+        If any translation has been applied the result of this method is the join of all values translated. */
         return numberHasNotBeenTranslated
                 ? String.valueOf(numberToTranslate)
                 : String.join(EMPTY, translationExecuted);
