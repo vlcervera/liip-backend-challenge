@@ -28,6 +28,9 @@ public class BeerApplicationWithoutFramework {
         DivisorTranslation customDivisorTranslationForFizz = new DivisorTranslation(3, "fizz");
         DivisorTranslation customDivisorTranslationForBuzz = new DivisorTranslation(5, "buzz");
 
+        /* FIXME Create implementation with lambdas
+        Translation customDivisorTranslationForFizz = number -> number % 3 == 0 ? Optional.of("fizz") : Optional.empty();*/
+
         List<Translation> translationsToUse = List.of(customDivisorTranslationForFizz, customDivisorTranslationForBuzz);
         Translations      translations      = new Translations(translationsToUse);
 
