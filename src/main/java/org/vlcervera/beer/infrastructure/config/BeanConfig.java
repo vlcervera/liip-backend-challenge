@@ -1,6 +1,7 @@
 package org.vlcervera.beer.infrastructure.config;
 
 import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,11 @@ import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 import org.vlcervera.beer.infrastructure.adapter.FileNameGenerator;
 import org.vlcervera.beer.infrastructure.adapter.TranslationStorageRepositoryAdapter;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Configuration
+@Slf4j
 public class BeanConfig {
 
     @Value("${beer.limit}")
@@ -22,6 +25,13 @@ public class BeanConfig {
 
     @Value("${beer.path}")
     private String path;
+
+    @PostConstruct
+    public void logConfiguration() {
+        log.info("Beer application configuration");
+        log.info("Translation sequence limit........ {}", limit);
+        log.info("Translation storage path.......... {}", path);
+    }
 
     @Bean
     public TranslationSaveRepositoryPort getTranslationSavedRepository(FileNameGenerator fileNameGenerator) {
