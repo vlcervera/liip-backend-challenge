@@ -1,4 +1,4 @@
-package org.vlcervera.beer.domain.model.translation;
+package org.vlcervera.beer.domain.model.sequence;
 
 import lombok.extern.slf4j.Slf4j;
 import org.vlcervera.beer.domain.exception.NumberToStartIsGreaterThanLimitException;

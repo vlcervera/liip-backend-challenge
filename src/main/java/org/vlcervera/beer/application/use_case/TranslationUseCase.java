@@ -2,7 +2,7 @@ package org.vlcervera.beer.application.use_case;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.vlcervera.beer.domain.model.translation.Sequence;
+import org.vlcervera.beer.domain.model.sequence.Sequence;
 import org.vlcervera.beer.domain.model.translation.Translations;
 import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 
