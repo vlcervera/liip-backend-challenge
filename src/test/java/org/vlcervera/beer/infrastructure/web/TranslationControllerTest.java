@@ -3,6 +3,7 @@ package org.vlcervera.beer.infrastructure.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,7 +14,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.vlcervera.beer.infrastructure.web.exception_handler.ApiError;
-import org.vlcervera.beer.utils.NumbersTranslatedExpected;
 
 import java.util.List;
 
@@ -25,9 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class TranslationControllerTest {
 
     @Autowired
-    private MockMvc      mockMvc;
-    private ObjectMapper objectMapper = createDefaultMapper();
-    private int          limit        = 15; //defined in application.yml in test resource
+    private       MockMvc      mockMvc;
+    private final ObjectMapper objectMapper = createDefaultMapper();
 
     @Test
     public void shouldReturnListOfNumbersTranslated() throws Exception {
@@ -43,10 +42,12 @@ public class TranslationControllerTest {
 
         List numbers = objectMapper.readValue(result.getResponse().getContentAsString(), List.class);
 
+        //defined in application.yml in test resource
+        int limit = 15;
         assertThat(numbers)
                 .isNotEmpty()
                 .hasSize(limit - numberToStart + 1)
-                .isEqualTo(NumbersTranslatedExpected.getNumbersTranslatedFor15());
+                .isEqualTo(getNumbersTranslatedExpected());
     }
 
 
@@ -68,6 +69,28 @@ public class TranslationControllerTest {
         assertThat(apiError).isNotNull();
         assertThat(apiError.getType()).isEqualTo(ApiError.Type.NUMBER_OF_START_EXCEEDS_LIMIT);
 
+    }
+
+
+    private List<String> getNumbersTranslatedExpected() {
+        return
+                Lists.newArrayList(
+                        "1",
+                        "2",
+                        "fizz",
+                        "4",
+                        "buzz",
+                        "fizz",
+                        "7",
+                        "8",
+                        "fizz",
+                        "buzz",
+                        "11",
+                        "fizz",
+                        "13",
+                        "14",
+                        "fizzbuzz"
+                                  );
     }
 
     private ObjectMapper createDefaultMapper() {

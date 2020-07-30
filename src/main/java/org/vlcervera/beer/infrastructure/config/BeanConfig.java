@@ -43,13 +43,14 @@ public class BeanConfig {
 
         DivisorTranslation customDivisorTranslationForFizz = new DivisorTranslation(3, "fizz");
         DivisorTranslation customDivisorTranslationForBuzz = new DivisorTranslation(5, "buzz");
-        /*
-        TODO if you want to add more translators to the use case you can create new implementations of Translation interface.
+        /*if you want to add more translators to the use case you can create new implementations of Translation interface.
         For example,
         PairNumberTranslation pair         = new PairNumberTranslation();
 
-        ALl this translations will be applied in use case
-         */
+        Also, we can create a new implementation of Translation using lambdas because it is a Functional interface:
+        Translation translationTen     = number -> number % 10 == 0 ? Optional.of("ten") : Optional.empty();
+
+        ALl this translations will be applied in use case*/
 
         List<Translation> translationsToUse = Lists.newArrayList(customDivisorTranslationForFizz, customDivisorTranslationForBuzz);
         Translations      translations      = new Translations(translationsToUse);
