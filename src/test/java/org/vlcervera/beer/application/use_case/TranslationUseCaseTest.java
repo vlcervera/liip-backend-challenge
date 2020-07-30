@@ -26,9 +26,8 @@ public class TranslationUseCaseTest {
     @Test
     public void shouldTranslateAllNumbersAndStoreTheResultAndReturnIt() {
         //GIVEN
-        int limit              = 100;
-        int numberToStart      = 4;
-        int numbersToTranslate = (limit - numberToStart) + 1;
+        int limit         = 100;
+        int numberToStart = 4;
 
         translationUseCase = new TranslationUseCase(translations, limit, translationSaveRepositoryPort);
 
@@ -36,10 +35,10 @@ public class TranslationUseCaseTest {
         List<String> numbersTranslated = translationUseCase.translate(numberToStart);
 
         //THEN
-        verify(translations, times(numbersToTranslate)).translate(anyInt());
+        verify(translations, times(1)).translate(anyList());
 
-        verify(translationSaveRepositoryPort, times(1))
-                .save(anyList());
+        verify(translationSaveRepositoryPort).save(anyList());
+
     }
 
 }

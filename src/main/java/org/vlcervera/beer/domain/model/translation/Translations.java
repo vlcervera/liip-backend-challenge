@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 import static org.apache.logging.log4j.util.Strings.EMPTY;
@@ -18,6 +19,13 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 @RequiredArgsConstructor
 public class Translations {
     private final List<Translation> translations;
+
+    public List<String> translate(List<Integer> numbersToTranslate) {
+        return numbersToTranslate.stream()
+                                 .map(this::translate)
+                                 .collect(Collectors.toList());
+
+    }
 
     public String translate(int numberToTranslate) {
 

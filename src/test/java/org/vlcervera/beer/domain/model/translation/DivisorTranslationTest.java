@@ -18,6 +18,9 @@ public class DivisorTranslationTest {
         return Stream.of(
                 Arguments.of(3, fizz, 3, fizz),
                 Arguments.of(3, fizz, 4, null),
+                Arguments.of(3, fizz, 6, fizz),
+                Arguments.of(3, fizz, 30, fizz),
+                Arguments.of(3, fizz, 31, null),
                 Arguments.of(5, buzz, 1, null),
                 Arguments.of(5, buzz, 15, buzz)
                         );

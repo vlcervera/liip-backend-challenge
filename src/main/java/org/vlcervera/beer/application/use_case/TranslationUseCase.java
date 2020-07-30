@@ -7,7 +7,6 @@ import org.vlcervera.beer.domain.model.translation.Translations;
 import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -22,9 +21,7 @@ public class TranslationUseCase {
 
         Sequence sequence = new Sequence(numberToStart, limit);
 
-        List<String> numbersTranslated = sequence.getSequence().stream()
-                                                 .map(translations::translate)
-                                                 .collect(Collectors.toList());
+        List<String> numbersTranslated = translations.translate(sequence.getSequence());
 
         log.info("Translation process returns {} numbers translated", numbersTranslated.size());
 
