@@ -9,7 +9,8 @@ import org.vlcervera.beer.domain.port.TranslationSaveRepositoryPort;
 
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyList;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class TranslationUseCaseTest {
@@ -35,7 +36,7 @@ public class TranslationUseCaseTest {
         List<String> numbersTranslated = translationUseCase.translate(numberToStart);
 
         //THEN
-        verify(translations, times(1)).translate(anyList());
+        verify(translations).apply(anyList());
 
         verify(translationSaveRepositoryPort).save(anyList());
 

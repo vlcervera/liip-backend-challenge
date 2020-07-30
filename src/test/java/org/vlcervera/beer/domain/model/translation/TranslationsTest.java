@@ -24,7 +24,7 @@ public class TranslationsTest {
                                                     .boxed().collect(Collectors.toList());
 
         //WHEN
-        List<String> numbersTranslated = translations.translate(numbersToTranslate);
+        List<String> numbersTranslated = translations.apply(numbersToTranslate);
         //THEN
         Assertions.assertThat(numbersTranslated).isEqualTo(NumbersTranslatedExpected.getNumbersTranslatedFor15());
     }

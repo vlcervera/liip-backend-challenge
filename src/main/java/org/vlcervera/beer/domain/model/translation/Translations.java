@@ -20,14 +20,14 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 public class Translations {
     private final List<Translation> translations;
 
-    public List<String> translate(List<Integer> numbersToTranslate) {
+    public List<String> apply(List<Integer> numbersToTranslate) {
         return numbersToTranslate.stream()
-                                 .map(this::translate)
+                                 .map(this::apply)
                                  .collect(Collectors.toList());
 
     }
 
-    public String translate(int numberToTranslate) {
+    public String apply(int numberToTranslate) {
 
         /* Apply all translations to numberToTranslate */
         List<String> translationExecuted = translations.stream()

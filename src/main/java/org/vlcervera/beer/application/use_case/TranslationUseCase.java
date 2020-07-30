@@ -21,7 +21,7 @@ public class TranslationUseCase {
 
         Sequence sequence = new Sequence(numberToStart, limit);
 
-        List<String> numbersTranslated = translations.translate(sequence.getSequence());
+        List<String> numbersTranslated = translations.apply(sequence.getSequence());
 
         log.info("Translation process returns {} numbers translated", numbersTranslated.size());
 
