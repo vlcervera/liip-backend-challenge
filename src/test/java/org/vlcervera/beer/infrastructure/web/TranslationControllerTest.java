@@ -24,9 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class TranslationControllerTest {
 
+    private final ObjectMapper objectMapper = createDefaultMapper();
     @Autowired
     private       MockMvc      mockMvc;
-    private final ObjectMapper objectMapper = createDefaultMapper();
 
     @Test
     public void shouldReturnListOfNumbersTranslated() throws Exception {

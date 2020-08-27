@@ -17,30 +17,22 @@ public class BeerApplicationWithoutFramework {
 
     public static void main(String[] args) {
 
-        /* Create beans for dependencies */
-
-        // For TranslationSaveRepositoryAdapter
         FileNameGenerator                   fileNameGenerator                   = new FileNameGenerator();
         String                              path                                = "/tmp/test";
         TranslationStorageRepositoryAdapter translationStorageRepositoryAdapter = new TranslationStorageRepositoryAdapter(path, fileNameGenerator);
 
-        // Create translations available
         DivisorTranslation customDivisorTranslationForFizz = new DivisorTranslation(3, "fizz");
         DivisorTranslation customDivisorTranslationForBuzz = new DivisorTranslation(5, "buzz");
 
-        /* FIXME Create implementation with lambdas
-        Translation customDivisorTranslationForFizz = number -> number % 3 == 0 ? Optional.of("fizz") : Optional.empty();*/
 
         List<Translation> translationsToUse = List.of(customDivisorTranslationForFizz, customDivisorTranslationForBuzz);
         Translations      translations      = new Translations(translationsToUse);
 
-        //Use case
         int                limit              = 100;
         TranslationUseCase translationUseCase = new TranslationUseCase(translations, limit, translationStorageRepositoryAdapter);
 
 
-        int numberToStart = 10;
-        //Execute use case
+        int          numberToStart     = 10;
         List<String> numbersTranslated = translationUseCase.translate(numberToStart);
 
         numbersTranslated.forEach(System.out::println);

@@ -2,7 +2,6 @@ package org.vlcervera.beer.domain.model.sequence;
 
 import org.junit.jupiter.api.Test;
 import org.vlcervera.beer.domain.exception.NumberToStartIsGreaterThanLimitException;
-import org.vlcervera.beer.domain.model.sequence.Sequence;
 
 import java.util.List;
 
