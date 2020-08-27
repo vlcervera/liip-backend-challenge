@@ -15,7 +15,7 @@
     <description>Beer challenge</description>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>13</java.version>
     </properties>
 
     <dependencies>
@@ -52,6 +52,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <release>13</release>  <!--or <release>10</release>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
