@@ -8,4 +8,8 @@ Any number divisible by three is replaced by the word fizz and any divisible by 
 
 You are requested to implement a webservice with a method that receive a integer with the random number to start and takes the limit from configuration, and that returns a List of strings with the correct Fizz Buzz serie, and register on a file the List as a string with a datetime signature. This web service has to be a RestFul web service. Moreover it have to be possible to call concurrently more than 100 time per seconds the method with no problems writing the serie on the file, and no bottlenecks.
 
-Separate responsabilities in separate layers: distributed services, application and domain. Implement error logging and manage exceptions in every layer. Implement unit test for any layer, too. Take care of proper naming convections and SOLID principles. You can use any Dependency Injection, Unit Testing, Mocking frameworks or any other that you consider necessary. 
+Separate responsabilities in separate layers: distributed services, application and domain. Implement error logging and manage exceptions in every layer. Implement unit test for any layer, too. Take care of proper naming convections and SOLID principles. You can use any Dependency Injection, Unit Testing, Mocking frameworks or any other that you consider necessary.
+
+Colaboradores:
+Héctor Llorens
+Víctor Cervera
